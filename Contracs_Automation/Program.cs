@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using Contracs_Automation.Installments;
+using Contracs_Automation.Services;
 
 namespace Contracs_Automation
 {
@@ -13,16 +15,16 @@ namespace Contracs_Automation
         {
             Console.WriteLine("Enter Contract Data:");
             Console.Write("Number: ");
-            int N = int.Parse(Console.ReadLine());
+            int Number = int.Parse(Console.ReadLine());
             Console.Write("Date (dd/MM/yyyy): ");
-            int D = int.Parse(Console.ReadLine());
-            Console.Write("Contract Value: ");
-            double C = double.Parse(Console.ReadLine());
+            DateTime D = DateTime.Parse(Console.ReadLine());
+            Console.Write("Contract Value: $");
+            double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
             int I = int.Parse(Console.ReadLine());
-
-            Value = C / I;
-            Console.Write(Value);
+            Contract C = new Contract(Number, ContractValue, _taxServices());
+            Console.Write(D);
+            Console.ReadLine();
         }
     }
 }

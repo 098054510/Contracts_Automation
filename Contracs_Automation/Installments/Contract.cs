@@ -7,17 +7,28 @@ using Contracs_Automation.Services;
 
 namespace Contracs_Automation.Installments
 {
-    class Contract
+    public class Contract : ITaxServices<Amount>
     {
         public int Number { get; private set; }
         public double ContractValue { get; private set; }
 
         private ITaxServices taxServices;
 
-        public Contract(int Number, double ContractValue, ITaxServices PayPal)
+        public Contract(int Number, double ContractValue, ITaxServices _taxServices)
         {
             Number = Number;
-            taxServices = PayPal;
+            _taxServices = taxServices;
+        }
+
+        public double Tax(double Amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(Amount amount)
+        {
+            return Number == amount.Number &&
+            ContractValue == amount.ContractValue; 
         }
     }
 }
