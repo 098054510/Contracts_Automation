@@ -1,6 +1,6 @@
 ﻿namespace Contracs_Automation.Services
 {
-    interface ITaxServices<Amount>
+    interface ITaxServices
     {
         double Tax(double Amount);
     }

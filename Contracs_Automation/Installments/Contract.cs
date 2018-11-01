@@ -7,7 +7,7 @@ using Contracs_Automation.Services;
 
 namespace Contracs_Automation.Installments
 {
-    public class Contract : ITaxServices<Amount>
+    public class Contract : ITaxServices
     {
         public int Number { get; private set; }
         public double ContractValue { get; private set; }
