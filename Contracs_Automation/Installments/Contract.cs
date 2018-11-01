@@ -14,21 +14,15 @@ namespace Contracs_Automation.Installments
 
         private ITaxServices taxServices;
 
-        public Contract(int Number, double ContractValue, ITaxServices _taxServices)
+        public Contract(int Number, double ContractValue)
         {
-            Number = Number;
-            _taxServices = taxServices;
+            this.Number = Number;
+            this.ContractValue = ContractValue;
+            taxServices = null;
         }
-
         public double Tax(double Amount)
         {
             throw new NotImplementedException();
-        }
-
-        public bool Equals(Amount amount)
-        {
-            return Number == amount.Number &&
-            ContractValue == amount.ContractValue; 
         }
     }
 }

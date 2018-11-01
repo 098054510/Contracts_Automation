@@ -22,7 +22,18 @@ namespace Contracs_Automation
             double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
             int I = int.Parse(Console.ReadLine());
-            Contract C = new Contract(Number, ContractValue, _taxServices());
+            double FinalValue = 0.0;
+            FinalValue = ContractValue / I;
+            Console.WriteLine("$" + FinalValue.ToString("F2", CultureInfo.InvariantCulture));
+
+            for (int i = 0; i<I; i++)
+            {
+                double Sub, Final;
+                Sub = 1% + FinalValue * I;
+                Final = 2% + Sub;
+                Console.WriteLine("$" + Final.ToString("F2", CultureInfo.InvariantCulture));
+            }
+
             Console.Write(D);
             Console.ReadLine();
         }

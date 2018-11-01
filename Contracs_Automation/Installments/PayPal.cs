@@ -7,7 +7,7 @@ using Contracs_Automation.Services;
 
 namespace Contracs_Automation.Installments
 {
-    class PayPal : ITaxServices<Amount>
+    class PayPal : ITaxServices
     {
         public double CC { get; set; }
         public int I { get; set; }
@@ -30,9 +30,5 @@ namespace Contracs_Automation.Installments
         {
             throw new NotImplementedException();
         }
-    }
-
-    internal interface Amount
-    {
     }
 }
