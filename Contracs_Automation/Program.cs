@@ -28,30 +28,21 @@ namespace Contracs_Automation
                 int Mounth = int.Parse(Console.ReadLine());
                 Contract contract = new Contract(Mounth, ContractValue);
                 PayPal paypal = new PayPal(contract);
-                double FinalValue = 0.0;
                 paypal.CValue = ContractValue / Mounth;
 
-                Console.WriteLine("$" + FinalValue.ToString("F2", CultureInfo.InvariantCulture));
+                Console.WriteLine("$" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
 
                 for (int ii = 0; ii < Mounth; ii++)
                 {
                     double Sub, Final, Final2;
-                    Sub = 1.01 + FinalValue * Mounth;
+                    Sub = 1.01 + paypal.CValue * Mounth;
                     Final = 2 % +Sub;
                     Final2 = Final + Sub;
                     Console.WriteLine("$" + Final2.ToString("F2", CultureInfo.InvariantCulture));
                 }
-
-                for (int iii = 0; iii < Mounth; iii++)
-                {
-                    double Final;
-                    Final = 2 % +FinalValue;
-                    Console.WriteLine("$" + Final.ToString("F2", CultureInfo.InstalledUICulture));
-                }
-
-                Console.Write(D);
-                Console.ReadLine();
+                Console.WriteLine(D);
             }
+            Console.ReadLine();
         }
     }
 }

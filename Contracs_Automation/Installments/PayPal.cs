@@ -14,7 +14,7 @@ namespace Contracs_Automation.Installments
 
         public PayPal(Contract contract)
         {
-            this.CValue = 0.0;
+            CValue = 0.0;
             this.contract = contract;
         }
 
