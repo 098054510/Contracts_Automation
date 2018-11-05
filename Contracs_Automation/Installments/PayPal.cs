@@ -9,20 +9,18 @@ namespace Contracs_Automation.Installments
 {
     class PayPal : ITaxServices
     {
-        public double CC { get; set; }
-        public int I { get; set; }
         public double CValue {get;set;}
+        public Contract contract { get; set; }
 
-        public PayPal(double CC, int I, double CValue)
+        public PayPal(Contract contract)
         {
-            this.CC = CC;
-            this.I = I;
             this.CValue = 0.0;
+            this.contract = contract;
         }
 
         double ITax(double CValue)
         {
-            CValue = CC / I ;
+            CValue = contract.ContractValue / contract.Mounth;
             return CValue;
         }
 

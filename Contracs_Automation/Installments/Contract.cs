@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contracs_Automation.Services;
+using Contracs_Automation.Installments;
 
 namespace Contracs_Automation.Installments
 {
     public class Contract : ITaxServices
     {
-        public int Number { get; private set; }
+        public int Mounth { get; private set; }
         public double ContractValue { get; private set; }
 
         private ITaxServices taxServices;
 
-        public Contract(int Number, double ContractValue)
+        public Contract(int Mounth, double ContractValue)
         {
-            this.Number = Number;
+            this.Mounth = Mounth;
             this.ContractValue = ContractValue;
             taxServices = null;
         }
