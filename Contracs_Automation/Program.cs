@@ -22,17 +22,16 @@ namespace Contracs_Automation
             double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
             int Mounth = int.Parse(Console.ReadLine());
-            Contract contract = new Contract(Mounth, ContractValue);
-            PayPal paypal = new PayPal(contract);
-            paypal.CValue = ContractValue / Mounth;
-            Console.WriteLine("$" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
-            double Percent, Final, Final2;
-            Percent = paypal.CValue / 100;
-            Final = paypal.CValue + (3 / 100);
-            Final2 = Final + Percent;
-            Console.WriteLine("$" + Percent.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("$" + Final2.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine(D);
+            Console.Write("Insert the Percent of Monthly and Payment fee: ");
+            double PCent = double.Parse(Console.ReadLine());
+            Contract C = new Contract(Mounth, ContractValue, PCent);
+            PayPal P = new PayPal(C);
+            for (int i = Mounth; i <= Mounth; i++)
+            {
+                double Final;
+                Final = P.CValue;
+                Console.WriteLine("$" + Final.ToString("F2", CultureInfo.InvariantCulture));
+            }
             Console.ReadLine();
         }
     }
