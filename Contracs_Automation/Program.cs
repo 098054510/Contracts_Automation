@@ -28,9 +28,7 @@ namespace Contracs_Automation
             PayPal P = new PayPal(C);
             for (int i = Mounth; i <= Mounth; i++)
             {
-                double Final;
-                Final = P.CValue;
-                Console.WriteLine("$" + Final.ToString("F2", CultureInfo.InvariantCulture));
+                Console.WriteLine("$" + P.Tax(P.CValue).ToString("F2", CultureInfo.InvariantCulture));
             }
             Console.ReadLine();
         }
