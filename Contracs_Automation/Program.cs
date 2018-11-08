@@ -34,12 +34,10 @@ namespace Contracs_Automation
             S1 = paypal.CValue * 0.01;
             S2 = S1 + Percent;
             S3 = paypal.CValue + S2 + Percent;
-            Final4 = S3 * Mounth;
 
             Console.WriteLine("$" + Percent.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("$" + S2.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("$" + S3.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("$" + Final4.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine(D);
 
             Console.ReadLine();

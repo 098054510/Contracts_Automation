@@ -10,11 +10,11 @@ namespace Contracs_Automation.Installments
 {
     public class Contract : ITaxServices
     {
+        private ITaxServices taxServices;
+
         public int Mounth { get; private set; }
         public double ContractValue { get; private set; }
         public double PCent { get; set; }
-
-        private ITaxServices taxServices;
 
         public Contract(int Mounth, double ContractValue, double PCent)
         {
