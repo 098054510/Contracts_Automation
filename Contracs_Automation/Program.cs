@@ -27,17 +27,18 @@ namespace Contracs_Automation
             Contract contract = new Contract(Mounth, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Mounth;
-            Console.WriteLine("$" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
 
-            double Percent, S1, S2, S3, Final4;
+            double Percent, S1, S2, S3;
             Percent = paypal.CValue / 100;
             S1 = paypal.CValue * 0.01;
             S2 = S1 + Percent;
             S3 = paypal.CValue + S2 + Percent;
 
-            Console.WriteLine("$" + Percent.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("$" + S2.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("$" + S3.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Contract Price: $" + ContractValue);
+            Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Payment Fee: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Final Value of Mounth: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine(D);
 
             Console.ReadLine();
