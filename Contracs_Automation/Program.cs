@@ -26,13 +26,20 @@ namespace Contracs_Automation
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Mounth;
             Console.WriteLine("$" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
-            double Percent, Final, Final2;
+
+            double Percent, Final, Final2, Final3, Final4;
             Percent = paypal.CValue / 100;
-            Final = paypal.CValue + (3 / 100);
+            Final = paypal.CValue * 0.01;
             Final2 = Final + Percent;
+            Final3 = paypal.CValue + Final2 + Percent;
+            Final4 = Final3 * Mounth;
+
             Console.WriteLine("$" + Percent.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("$" + Final2.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("$" + Final3.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("$" + Final4.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine(D);
+
             Console.ReadLine();
         }
     }
