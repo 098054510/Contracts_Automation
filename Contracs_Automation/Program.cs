@@ -28,9 +28,11 @@ namespace Contracs_Automation
             PayPal P = new PayPal(C);
             for (int i = Mounth; i <= Mounth; i++)
             {
-                double Final;
-                Final = P.CValue + C.SubPercent();
+                double Final, Final2;
+                Final = (C.PCent / ContractValue) * 100;
+                Final2 = Final + ContractValue;
                 Console.WriteLine("$" + Final.ToString("F2", CultureInfo.InvariantCulture));
+                Console.WriteLine("$" + Final2.ToString("F2", CultureInfo.InvariantCulture));
             }
             Console.ReadLine();
         }
