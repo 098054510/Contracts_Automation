@@ -20,7 +20,7 @@ namespace Contracs_Automation.Installments
 
         double ITax(double CValue)
         {
-            CValue = contract.ContractValue / contract.Mounth;
+            CValue = contract.ContractValue + contract.SubPercent();
             return CValue;
         }
 

@@ -21,6 +21,7 @@ namespace Contracs_Automation.Installments
             this.ContractValue = ContractValue;
             taxServices = null;
         }
+
         public double Tax(double Amount)
         {
             throw new NotImplementedException();

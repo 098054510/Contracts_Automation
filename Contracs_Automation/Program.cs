@@ -22,6 +22,7 @@ namespace Contracs_Automation
             double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
             int Mounth = int.Parse(Console.ReadLine());
+
             Contract contract = new Contract(Mounth, ContractValue);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Mounth;
