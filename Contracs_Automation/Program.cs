@@ -49,11 +49,15 @@ namespace Contracs_Automation
             if (NextMounth == 13)
             {
                 int NextMonth;
-                double NextInstallment;
+                double NextInstallment, Test, Test2;
                 NextMonth = NextMounth - 12;
-                NextInstallment = (paypal.CValue * NextMonth) * 0.01;
+                NextInstallment = paypal.CValue + S2 * NextMonth;
+                Test = NextInstallment * 0.02;
+                Test2 = Test + paypal.CValue;
                 Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
                 Console.WriteLine("Next Installment: $" + NextInstallment.ToString("F2", CultureInfo.InvariantCulture));
+                Console.WriteLine("Test: " + Test);
+                Console.WriteLine("Test 2: " + Test2);
             }
 
             if (NextMounth != 13)
