@@ -16,15 +16,18 @@ namespace Contracs_Automation
             Console.WriteLine("Enter Contract Data:");
             Console.Write("Number: ");
             int Number = int.Parse(Console.ReadLine());
-            Console.Write("Date (dd/MM/yyyy): ");
-            DateTime D = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Date: ");
+            Console.Write("Day: ");
+            int Day = int.Parse(Console.ReadLine());
+            Console.Write("Mounth: ");
+            int Mounth = int.Parse(Console.ReadLine());
             Console.Write("Contract Value: $");
             double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
-            int Mounth = int.Parse(Console.ReadLine());
+            int Installments = int.Parse(Console.ReadLine());
             double PCent = 0.0;
 
-            Contract contract = new Contract(Mounth, ContractValue, PCent);
+            Contract contract = new Contract(Installments, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Mounth;
 
@@ -39,7 +42,7 @@ namespace Contracs_Automation
             Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Payment Fee: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Final Value of Mounth: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine(D);
+            Console.WriteLine("Current Mounth: " + Day + "/" + Mounth);
 
             Console.ReadLine();
         }
