@@ -19,7 +19,7 @@ namespace Contracs_Automation
             Console.WriteLine("Date: ");
             Console.Write("Day: ");
             int Day = int.Parse(Console.ReadLine());
-            Console.Write("Mounth: ");
+            Console.Write("Month: ");
             int Mounth = int.Parse(Console.ReadLine());
             Console.Write("Contract Value: $");
             double ContractValue = double.Parse(Console.ReadLine());
@@ -29,7 +29,7 @@ namespace Contracs_Automation
 
             Contract contract = new Contract(Installments, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
-            paypal.CValue = ContractValue / Mounth;
+            paypal.CValue = ContractValue / Installments;
 
             double Percent, S1, S2, S3;
             Percent = paypal.CValue / 100;
@@ -40,9 +40,28 @@ namespace Contracs_Automation
             Console.WriteLine("Contract Price: $" + ContractValue);
             Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Payment Fee: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Payment Fee Price: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Final Value of Mounth: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Current Mounth: " + Day + "/" + Mounth);
+            Console.WriteLine("Current Date: " + Day + "/" + Mounth);
+
+            int NextMounth;
+            NextMounth = Mounth + 1;
+            if (NextMounth == 13)
+            {
+                int NextMonth;
+                double NextInstallment;
+                NextMonth = NextMounth - 12;
+                NextInstallment = (paypal.CValue * NextMonth) * 0.01;
+                Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
+                Console.WriteLine("Next Installment: $" + NextInstallment.ToString("F2", CultureInfo.InvariantCulture));
+            }
+
+            if (NextMounth != 13)
+            {
+                int NextMonth;
+                NextMonth = NextMounth++;
+                Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
+            }
 
             Console.ReadLine();
         }
