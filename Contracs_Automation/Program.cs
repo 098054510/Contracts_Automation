@@ -13,7 +13,7 @@ namespace Contracs_Automation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter Contract Data:");
+            Console.WriteLine("Please, Enter Contract Data:");
             Console.Write("Number: ");
             int Number = int.Parse(Console.ReadLine());
             Console.WriteLine("Date: ");
