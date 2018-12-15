@@ -11,62 +11,68 @@ namespace Contracs_Automation
 {
     class Program
     {
+        public static List<Contract> contracts = new List<Contract>();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Please, Enter Contract Data:");
-            Console.Write("Number: ");
-            int Number = int.Parse(Console.ReadLine());
-            Console.WriteLine("Date: ");
-            Console.Write("Day: ");
-            int Day = int.Parse(Console.ReadLine());
-            Console.Write("Month: ");
-            int Mounth = int.Parse(Console.ReadLine());
-            Console.Write("Contract Value: $");
-            double ContractValue = double.Parse(Console.ReadLine());
-            Console.Write("Enter the number of installments: ");
-            int Installments = int.Parse(Console.ReadLine());
-            double PCent = 0.0;
-
-            Contract contract = new Contract(Installments, ContractValue, PCent);
-            PayPal paypal = new PayPal(contract);
-            paypal.CValue = ContractValue / Installments;
-
-            double Percent, S1, S2, S3;
-            Percent = paypal.CValue / 100;
-            S1 = paypal.CValue * 0.01;
-            S2 = S1 + Percent;
-            S3 = paypal.CValue + S2 + Percent;
-
-            Console.WriteLine("Contract Price: $" + ContractValue);
-            Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Payment Fee Price: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Final Value of Mounth: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Current Date: " + Day + "/" + Mounth);
-
-            int NextMounth;
-            NextMounth = Mounth + 1;
-            if (NextMounth == 13)
+            Console.Clear();
+            int option = 0;
+            while (option == 0)
             {
-                int NextMonth;
-                double NextInstallment, Test, Test2;
-                NextMonth = NextMounth - 12;
-                NextInstallment = paypal.CValue + S2 * NextMonth;
-                Test = NextInstallment * 0.02;
-                Test2 = Test + paypal.CValue;
-                Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
-                Console.WriteLine("Next Installment: $" + NextInstallment.ToString("F2", CultureInfo.InvariantCulture));
-                Console.WriteLine("Test: " + Test);
-                Console.WriteLine("Test 2: " + Test2);
-            }
+                try
+                {
+                    Console.Clear();
+                    Screen.MainScreen();
+                    option = int.Parse(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Screen.CreateContract();
+                            Console.Write("Press 'ENTER' to Continue");
+                            try
+                            {
+                                option = int.Parse(Console.ReadLine());
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("An Unexpected Error " + e.Message);
+                                option = 0;
+                            }
+                            break;
 
-            if (NextMounth != 13)
-            {
-                int NextMonth;
-                NextMonth = NextMounth++;
-                Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
-            }
+                        case 2:
+                            Screen.CreatedContracts();
+                            Console.Write("Press 'ENTER' to Continue");
+                            try
+                            {
+                                option = int.Parse(Console.ReadLine());
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("An Unexpected Error " + e.Message);
+                                option = 0;
+                            }
+                            break;
 
+                        case 3:
+                            Console.Write("Ending...");
+                            break;
+
+                        default:
+                            Console.WriteLine("Option not valid");
+                            Console.WriteLine("Please insert a valid Option");
+                            Console.WriteLine("Press 'ENTER' to Continue");
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An Unexpected Error Founded " + e.Message);
+                    Console.Write("Press 'ENTER' to Continue");
+                }
+            }
+            Console.WriteLine("Sorry, option not Valid, please, insert a valid option");
+            option = 0;
             Console.ReadLine();
         }
     }
