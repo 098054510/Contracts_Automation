@@ -71,9 +71,6 @@ namespace Contracs_Automation
                     Console.Write("Press 'ENTER' to Continue");
                 }
             }
-            Console.WriteLine("Sorry, option not Valid, please, insert a valid option");
-            option = 0;
-            Console.ReadLine();
         }
     }
 }
