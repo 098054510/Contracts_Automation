@@ -23,9 +23,7 @@ namespace Contracs_Automation
         public static void CreateContract()
         {
             Console.WriteLine("Please, Enter Contract Data:");
-            Console.Write("Number: ");
-            int Number = int.Parse(Console.ReadLine());
-            Console.WriteLine("Insert The Date ");
+            Console.WriteLine("Insert The Date: ");
             Console.Write("Day: ");
             int Day = int.Parse(Console.ReadLine());
             Console.Write("Month: ");
@@ -77,48 +75,9 @@ namespace Contracs_Automation
 
         public static void CreatedContracts()
         {
-            int N = 0;
-            Console.WriteLine("Choice how you want search");
-            Console.WriteLine("1 - Search From Contract Code");
-            Console.WriteLine("2 - Search From All Contracts");
-            Console.Write("Your Choice: ");
-            N = int.Parse(Console.ReadLine());
-
-            switch (N)
-            {
-                case 1:
-                    Console.WriteLine("Insert the Code of Contract");
-                    Console.Write("Code: ");
-
-                    try
-                    {
-                        N = int.Parse(Console.ReadLine());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Unexpected Error " + e.Message);
-                    }
-                    break;
-                case 2:
-                    Console.WriteLine("Created Contracts: ");
-                    var Amount = 0;
-                    foreach (var contract in Program.contracts)
-                    {
-                        Amount++;
-                        Console.WriteLine(Amount + "º " + contract);
-                    }
-                    try
-                    {
-                        N = int.Parse(Console.ReadLine());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Unexpected Error " + e.Message);
-                        N = 0;
-                    }
-                    break;
-            }
-
+            Console.WriteLine("Created Contracts:");
+            Console.WriteLine(Program.contracts);
+            Console.Write("Press 'ENTER' to Continue");
         }
     }
 }
