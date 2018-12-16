@@ -76,8 +76,12 @@ namespace Contracs_Automation
         public static void CreatedContracts()
         {
             Console.WriteLine("Created Contracts:");
-            Console.WriteLine(Program.contracts);
-            Console.Write("Press 'ENTER' to Continue");
+            var Amount = 0;
+            foreach (var contracts in Program.contracts)
+            {
+                Amount++;
+                Console.WriteLine(Amount + "º " + contracts);
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Contracs_Automation
     class Program
     {
         public static List<Contract> contracts = new List<Contract>();
-
         static void Main(string[] args)
         {
             Console.Clear();
@@ -62,6 +61,8 @@ namespace Contracs_Automation
                             Console.WriteLine("Option not valid");
                             Console.WriteLine("Please insert a valid Option");
                             Console.WriteLine("Press 'ENTER' to Continue");
+                            option = 0;
+                            Console.ReadLine();
                             break;
                     }
                 }
