@@ -36,11 +36,15 @@ namespace Contracs_Automation
             Contract contract = new Contract(Installments, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Installments;
-            double Percent, S1, S2, S3;
+            double Percent, S1, S2, S3, S4;
             Percent = paypal.CValue / 100;
             S1 = paypal.CValue * 0.01;
             S2 = S1 + Percent;
             S3 = paypal.CValue + S2 + Percent;
+            S4 = S3 + S1 + S2;
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("----------------Contract Info----------------");
+            Console.WriteLine("---------------------------------------------");
             Console.WriteLine("Contract Price: $" + ContractValue);
             Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
@@ -68,9 +72,9 @@ namespace Contracs_Automation
                 NextMonth = NextMounth++;
                 Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
             }
+            Console.WriteLine("Next Price of Installment: $" + S4);
             Contract C = new Contract(Mounth, ContractValue, PCent);
             Program.contracts.Add(C);
-            Console.ReadLine();
         }
 
         public static void CreatedContracts()
@@ -82,6 +86,7 @@ namespace Contracs_Automation
                 Amount++;
                 Console.WriteLine(Amount + "º " + contracts);
             }
+            
         }
     }
 }
