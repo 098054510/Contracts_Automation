@@ -24,16 +24,18 @@ namespace Contracs_Automation
         {
             Console.WriteLine("Please, Enter Contract Data:");
             Console.WriteLine("Insert The Date: ");
+            Console.Write("Contract Owner Name: ");
+            string Name = Console.ReadLine();
             Console.Write("Day: ");
             int Day = int.Parse(Console.ReadLine());
             Console.Write("Month: ");
-            int Mounth = int.Parse(Console.ReadLine());
+            int Month = int.Parse(Console.ReadLine());
             Console.Write("Contract Value: $");
             double ContractValue = double.Parse(Console.ReadLine());
             Console.Write("Enter the number of installments: ");
             int Installments = int.Parse(Console.ReadLine());
             double PCent = 0.0;
-            Contract contract = new Contract(Installments, ContractValue, PCent);
+            Contract contract = new Contract(Name, Installments, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Installments;
             double Percent, S1, S2, S3, S4;
@@ -45,14 +47,15 @@ namespace Contracs_Automation
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("----------------Contract Info----------------");
             Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("Contract Owner Name: " + Name);
             Console.WriteLine("Contract Price: $" + ContractValue);
             Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Payment Fee Price: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Final Value of Mounth: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Current Date: " + Day + "/" + Mounth);
+            Console.WriteLine("Current Date: " + Day + "/" + Month);
             int NextMounth;
-            NextMounth = Mounth + 1;
+            NextMounth = Month + 1;
             if (NextMounth == 13)
             {
                 int NextMonth;
@@ -71,11 +74,16 @@ namespace Contracs_Automation
                 int NextMonth;
                 NextMonth = NextMounth++;
                 Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
+                Console.WriteLine("Total Months of Installments: " + Installments);
             }
-            Console.WriteLine("Next Price of Installment: $" + S4);
-            Contract C = new Contract(Mounth, ContractValue, PCent);
+            Console.WriteLine("Next Price of Installment: $" + S4.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Final Installment: " + Day + "/" + Installments);
+            Console.WriteLine("Final Price; $" + S3 * Installments);
+            
+            Contract C = new Contract(Name, Month, ContractValue, PCent);
             Program.contracts.Add(C);
         }
+
 
         public static void CreatedContracts()
         {
@@ -86,7 +94,6 @@ namespace Contracs_Automation
                 Amount++;
                 Console.WriteLine(Amount + "º " + contracts);
             }
-            
         }
     }
 }

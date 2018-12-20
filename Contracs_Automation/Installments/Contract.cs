@@ -12,12 +12,14 @@ namespace Contracs_Automation.Installments
     {
         private ITaxServices taxServices;
 
+        public string Name { get; set; }
         public int Mounth { get; private set; }
         public double ContractValue { get; private set; }
         public double PCent { get; set; }
 
-        public Contract(int Mounth, double ContractValue, double PCent)
+        public Contract(string Name, int Mounth, double ContractValue, double PCent)
         {
+            this.Name = Name;
             this.PCent = PCent;
             this.Mounth = Mounth;
             this.ContractValue = ContractValue;
@@ -34,6 +36,13 @@ namespace Contracs_Automation.Installments
         public double Tax(double Amount)
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "Name of Contract Owner: " + Name + "\n" 
+                + "Contract initial Price: $" + ContractValue + "\n"
+                + "Months Paid: " + Mounth;
         }
     }
 }
