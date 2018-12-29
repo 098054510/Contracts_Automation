@@ -34,26 +34,21 @@ namespace Contracs_Automation
             double ContractValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter the number of installments: ");
             int Installments = int.Parse(Console.ReadLine());
-            double PCent = 0.0;
+            double PCent = 0.03 * 100;
             Contract contract = new Contract(Name, Installments, ContractValue, PCent);
             PayPal paypal = new PayPal(contract);
             paypal.CValue = ContractValue / Installments;
-            double Percent, S1, S2, S3, S4, A8;
-            Percent = paypal.CValue / 100;
-            S1 = paypal.CValue * 0.01;
-            S2 = S1 + Percent;
-            S3 = paypal.CValue + S2 + Percent;
-            S4 = S3 + S1 + S2;
-            A8 = S3 * Installments;
+            double A8;
+            A8 = paypal.CValue + PCent;
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("----------------Contract Info----------------");
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("Contract Owner Name: " + Name);
             Console.WriteLine("Contract Price: $" + ContractValue.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Installments Price: $" + paypal.CValue.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Payment Fee Price: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
-            Console.WriteLine("Current Date: " + Day + "/" + Month + " - " + "Current Value: $" + S3.ToString("F2", CultureInfo.InvariantCulture));
+            //Console.WriteLine("Monthly Simple Interest Price: $" + Percent.ToString("F2", CultureInfo.InvariantCulture));
+            //Console.WriteLine("Payment Fee Price: $" + S2.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Current Date: " + Day + "/" + Month + " - " + "Current Value: $" + A8.ToString("F2", CultureInfo.InvariantCulture));
             int NextMounth;
             NextMounth = Month + 1;
             if (NextMounth == 13)
@@ -61,13 +56,13 @@ namespace Contracs_Automation
                 int NextMonth;
                 double NextInstallment, Test, Test2;
                 NextMonth = NextMounth - 12;
-                NextInstallment = paypal.CValue + S2 * NextMonth;
-                Test = NextInstallment * 0.02;
-                Test2 = Test + paypal.CValue;
+                //NextInstallment = paypal.CValue + S2 * NextMonth;
+                //Test = NextInstallment * 0.02;
+                //Test2 = Test + paypal.CValue;
                 Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
-                Console.WriteLine("Next Installment: $" + NextInstallment.ToString("F2", CultureInfo.InvariantCulture));
-                Console.WriteLine("Test: " + Test);
-                Console.WriteLine("Test 2: " + Test2);
+                //Console.WriteLine("Next Installment: $" + NextInstallment.ToString("F2", CultureInfo.InvariantCulture));
+                //Console.WriteLine("Test: " + Test);
+                //Console.WriteLine("Test 2: " + Test2);
             }
             if (NextMounth != 13)
             {
@@ -76,7 +71,7 @@ namespace Contracs_Automation
                 Console.WriteLine("Next Date of Installment: " + Day + "/" + NextMonth);
                 Console.WriteLine("Total Months of Installments: " + Installments);
             }
-            Console.WriteLine("Next Price of Installment: $" + S4.ToString("F2", CultureInfo.InvariantCulture));
+            //Console.WriteLine("Next Price of Installment: $" + S4.ToString("F2", CultureInfo.InvariantCulture));
             Console.WriteLine("Final Installment: " + Day + "/" + Installments);
             Console.WriteLine("Final Price; $" + A8.ToString("F2", CultureInfo.InvariantCulture));
             Contract C = new Contract(Name, Month, ContractValue, PCent);
